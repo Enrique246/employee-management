@@ -35,7 +35,7 @@ function whatTo(){
 },
 {
     name:"Show Employees",
-    value:"show_employees"
+    value:"show_emp"
 
             },
 {
@@ -63,29 +63,98 @@ function whatTo(){
 }                                            
         ]              
        
-    }]) .then(({getWhat})=>{
-        if(getWhat === "show_depart"){
+    }]) .then(({Todo})=>{
+        if(Todo === "show_depart"){
             showDepart()
-        } else if (getWhat === "add_role"){
+        } else if (Todo === "add_role"){
         addRole();
         }
-        else if (getWhat === "add_emp"){
+        else if (Todo === "add_emp"){
             addEmp();
             }
-        else if (getWhat === "add_depart"){
+        else if (Todo === "add_depart"){
         addDepart();
         }
-        else if (getWhat === "update_emp"){
+        else if (Todo === "update_emp"){
             updateEmp();
             }
-        else if (getWhat === "update_role"){
+        else if (Todo === "update_role"){
         updateRole();
         }
-        else if (getWhat === "show_roles"){
+        else if (Todo === "show_roles"){
             showRole();
             }
-        else if (getWhat === "show_employees"){
+        else if (Todo === "show_emp"){
         showEmp();
         }
     })
+}
+
+//Show Departments
+function showDepart(){
+    console.log("I am selecting all departments...\n");
+    connection.query("SELECT id AS `ID`, department_name AS `Department` FROM department", function (err,res){
+    if (err) throw err;
+
+    console.table(res);
+    // allFinished();
+});
+}
+//Show Roles
+function showRole(){
+    console.log("I am selecting all roles...\n");
+    connection.query("SELECT title AS `Title`, salary AS `Salary`, department_id AS `Department ID` FROM role_employee" , function (err,res){
+    
+    if (err) throw err;
+
+    console.table(res);
+    allFinished();
+});
+}
+//Show Employees
+function showEmp(){
+    console.log("I am selecting all employees...\n");
+    connection.query("SELECT first_name AS `First Name`, last_name AS `Last Name`, manager_id  AS `Manager ID`, role_id  AS `Role ID` FROM employee" , function (err,res){
+        // id INT PRIMARY KEY AUTO_INCREMENT Not Null,
+        // first_name VARCHAR(30)Not Null,
+        // last_name VARCHAR(30)Not Null,
+        // role_id INT Not Null,
+        // manager_id INT Not Null, 
+        // PRIMARY KEY (id)
+    if (err) throw err;
+
+    console.table(res);
+    allFinished();
+});
+}
+//Update role
+//Add employee
+//Update Employee
+//Update Role
+//Add Department
+//Add Role
+//All finished function
+function allFinished(){
+inquirer.prompt([
+{
+    type:"list",
+    name:"goon",
+    message: "Would you like to do something else?",
+    choices:[
+{
+    name: "Yes",
+    value:true
+},
+{
+    name:"No",
+    value: false
+        }
+
+    ]
+}
+])
+
+
+
+
 }
