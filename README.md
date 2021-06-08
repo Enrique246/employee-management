@@ -1,1 +1,47 @@
-# employee-management
+## Homework 12
+
+## Employee Management System
+### Description
+- What was your motivation?
+  - Learning to build a complete app with Node.js and sql.
+- Why did you build this project?  
+  - To undesterstand how sql and Node.js relate and work togather.
+- What problem does it solve?
+```
+As a business owner
+I want to be able to view and manage the departments, roles, and employees in my company
+So that I can organize and plan my business
+```
+- What did you learn?
+  - SQL data base management
+  - Node.js function building
+  - Mapping and returning elements from a database
+  - SQL querie construction
+
+### Lenguages Required:
+- Node.js
+- JavaScript
+- Inquirer
+- SQL
+
+## Usage
+
+[Watch Video](https://drive.google.com/file/d/1-NXs_TK8IgSLudiFq8e8ed16WxSWqTNy/view)
+
+## Resources
+- https://www.npmjs.com/package/inquirer
+- https://stackoverflow.com/questions/57344889/typeerror-cannot-read-property-type-of-undefined
+- https://www.w3schools.com/sql/sql_syntax.asp
+- Class activities
+
+
+## Credits
+- Enrique Del Castillo Chávez
+
+## Tests
+- Update role passed
+- Update employee passed
+- Add employee passed
+- Add new role passed
+- Add new department passed
+- All 3 table showing functions passed
