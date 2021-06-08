@@ -232,7 +232,66 @@ function addEmp(){
 }
 //Update Employee
 //Add Department
+function addDepart(){
+    connection.query("SELECT * FROM departments", function(err, res){
+        if (err) throw err;
+        const department= res.map(element=>{
+            return element.id
+        })
+        inquirer
+        .prompt([
+            {
+                name:"department",
+                type:"input",
+                message:"Insert the new department"
+            }
+        ]).then(function(answer){
+            connection.query(
+                "INSERT INTO department SET ?",
+                answer,
+                function(err){
+                    if (err) throw err;
+                    console.log(`${answer.department}has been added successfully!`)
+                    allFinished();
+                }
+            )
+        })
+    })
+}
 //Add Role
+function addRole(){
+    connection.query("SELECT * FROM department", function (err, res){
+        if (err) throw err;
+        const department =res.map(element=>{
+            return element.id
+        })
+        inquirer .prompt([
+            {
+                name:"title",
+                type:"input",
+                message: "What is the title?"
+            },
+            {
+                name:"salary",
+                type:"input",
+                message: "What is the salary?"
+            },
+            {
+                name:"department_id",
+                type:"input",
+                message: "What is the department ID?"
+            },
+        ]).then (function(answer){
+            connection.query("INSERT INTO role_employee SET ?",
+            answer,
+            function (err){
+                if (err) throw err;
+                console.log(`${answer.title} was added successfully`);
+                allFinished();
+            })
+        })
+    })
+}
 //All finished function
 function allFinished(){
 inquirer.prompt([
