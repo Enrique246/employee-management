@@ -233,7 +233,7 @@ function addEmp(){
 //Update Employee
 //Add Department
 function addDepart(){
-    connection.query("SELECT * FROM departments", function(err, res){
+    connection.query("SELECT * FROM department", function(err, res){
         if (err) throw err;
         const department= res.map(element=>{
             return element.id
@@ -241,7 +241,7 @@ function addDepart(){
         inquirer
         .prompt([
             {
-                name:"department",
+                name:"department_name",
                 type:"input",
                 message:"Insert the new department"
             }
@@ -251,7 +251,7 @@ function addDepart(){
                 answer,
                 function(err){
                     if (err) throw err;
-                    console.log(`${answer.department}has been added successfully!`)
+                    console.log(`${answer.department_name} has been added successfully!`)
                     allFinished();
                 }
             )
