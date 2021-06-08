@@ -26,7 +26,7 @@ So that I can organize and plan my business
 
 ## Usage
 
-[Watch Video](https://drive.google.com/file/d/1-NXs_TK8IgSLudiFq8e8ed16WxSWqTNy/view)
+[Watch Video](https://drive.google.com/file/d/1csM8bVv5LATYuYcgW0sA0DeTs_TUIkbv/view)
 
 ## Resources
 - https://www.npmjs.com/package/inquirer
