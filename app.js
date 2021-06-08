@@ -172,9 +172,10 @@ inquirer
 }
 //Add employee
 function addEmp(){
-    connection.query("SELECT id, title FROM role_employee",function(err,res){
+    connection.query("SELECT id, title, department_id FROM role_employee",function(err,res){
         if (err) throw err;
         const role=res.map(element=>element.title)
+        const man=res.map(element=>element.department_id)
         inquirer.prompt([
             {
                 type:"input",
@@ -187,20 +188,32 @@ function addEmp(){
                 message: "What is the employee last name?"
             },
             {
-                type:"input",
+                type:"list",
                 name:"role",
                 message: "What is the title of their role?",
                 choices: role
+            },
+            {
+                type:"list",
+                name:"man",
+                message: "What is the id of their manager?",
+                choices: man
             }
         ]).then(answers=>{
             const chRole=res.find(element=>{
                 return element.title===answers.role
+                //return element.title.toUpperCase()===answers.role.toUpperCase()
             });
-            console.log(chRole.id);
+            const chMan=res.find(element=>{
+                return element.department_id===answers.man
+            });
+            console.log(chRole.id,chMan.departament_id);
+            // console.log(chRole.id,chMan.manager_id);
             const newEmployee={
                 first_name: answers.first_name,
                 last_name: answers.last_name,
-                role_id: chRole.id
+                role_id: chRole.id,
+                manager_id: chMan.manager_id
             };
             // id INT PRIMARY KEY AUTO_INCREMENT Not Null,
         // first_name VARCHAR(30)Not Null,

@@ -19,7 +19,7 @@ CREATE TABLE employee (
     first_name VARCHAR(30)Not Null,
     last_name VARCHAR(30)Not Null,
     role_id INT Not Null,
-    manager_id INT Not Null 
+    manager_id INT 
 );
 
 

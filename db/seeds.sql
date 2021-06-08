@@ -1,9 +1,9 @@
 USE employee_DB;
 
 -- Department Seeds
-INSERT INTO department (id,deparment_name) VALUES ("1","Accounting");
-INSERT INTO department (id,deparment_name) VALUES ("2","Marketing");
-INSERT INTO department (id,deparment_name) VALUES ("3","Human Resources");
+INSERT INTO department (id,department_name) VALUES ("1","Accounting");
+INSERT INTO department (id,department_name) VALUES ("2","Marketing");
+INSERT INTO department (id,department_name) VALUES ("3","Human Resources");
 
 -- Role Seeds
 INSERT INTO role_employee (id, title, salary, department_id) VALUES ("1","ACCOUNTANT","3000","1");
