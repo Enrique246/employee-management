@@ -3,9 +3,6 @@ const path = require ("path");
 let mysql = require ('mysql');
 let inquirer = require('inquirer');
 const connection = require('./config/connection');
-const { inherits } = require("util");
-const { get } = require("http");
-const { allowedNodeEnvironmentFlags } = require("process");
 
 //Error detection
 

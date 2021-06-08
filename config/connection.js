@@ -4,7 +4,7 @@ const mysql = require ('mysql');
 
 module.exports = mysql.createConnection({
     host: "localhost",
-    port: 3003,
+    port: 3306,
 //User and password
     user: "root",
     password:"root",
