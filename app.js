@@ -1,7 +1,7 @@
 //require mysql and inquirer
 const path = require ("path");
-let mysql = require ('mysql');
-let inquirer = require('inquirer');
+const mysql = require ('mysql');
+const inquirer = require('inquirer');
 const connection = require('./config/connection');
 
 //Error detection
@@ -128,9 +128,95 @@ function showEmp(){
 });
 }
 //Update role
+function updateRole(){
+    connection.query("SELECT * FROM role_employee",function (err,res){
+        if (err) throw err;
+        const role = res.map(element => {
+            return element.id
+        })
+
+inquirer
+.prompt([
+    {
+        type:"input",
+        name:"first_name",
+        message: "What is the employee first name?"
+    },
+    {
+        type:"input",
+        name:"last_name",
+        message: "What is the employee last name?"
+    },
+    {
+        type:"list",
+        name:"role_id",
+        message: "What is the role ID?",
+        choices: role
+    }
+])
+.then(function(answer){
+    connection.query(
+        "INSERT INTO employee SET ?",
+        answer,
+        function(err){
+            if (err){
+                if (err) throw err;
+                console.log(`${answer.first_name}${answer.last_name} was added!`);
+                allFinished();
+            }
+        }
+    )
+})
+
+})
+}
 //Add employee
+function addEmp(){
+    connection.query("SELECT id, title FROM role_employee",function(err,res){
+        if (err) throw err;
+        const role=res.map(element=>element.title)
+        inquirer.prompt([
+            {
+                type:"input",
+                name:"first_name",
+                message: "What is the employee first name?"
+            },
+            {
+                type:"input",
+                name:"last_name",
+                message: "What is the employee last name?"
+            },
+            {
+                type:"input",
+                name:"role",
+                message: "What is the title of their role?",
+                choices: role
+            }
+        ]).then(answers=>{
+            const chRole=res.find(element=>{
+                return element.title===answers.role
+            });
+            console.log(chRole.id);
+            const newEmployee={
+                first_name: answers.first_name,
+                last_name: answers.last_name,
+                role_id: chRole.id
+            };
+            // id INT PRIMARY KEY AUTO_INCREMENT Not Null,
+        // first_name VARCHAR(30)Not Null,
+        // last_name VARCHAR(30)Not Null,
+        // role_id INT Not Null,
+        // manager_id INT Not Null, 
+        // PRIMARY KEY (id)
+        connection.query("INSERT INTO employee SET ?", newEmployee,(err)=>{
+            if (err) throw err;
+            console.log(`${newEmployee.first_name} has been added successfully!`);
+            allFinished();
+        })
+        })
+    })
+}
 //Update Employee
-//Update Role
 //Add Department
 //Add Role
 //All finished function
