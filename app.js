@@ -159,12 +159,10 @@ inquirer
         "INSERT INTO employee SET ?",
         answer,
         function(err){
-            if (err){
                 if (err) throw err;
                 console.log(`${answer.first_name}${answer.last_name} was added!`);
                 allFinished();
             }
-        }
     )
 })
 
@@ -176,6 +174,8 @@ function addEmp(){
         if (err) throw err;
         const role=res.map(element=>element.title)
         const man=res.map(element=>element.department_id)
+        // console.log("MANAGER: ", man)
+        // console.log(res)
         inquirer.prompt([
             {
                 type:"input",
@@ -200,6 +200,7 @@ function addEmp(){
                 choices: man
             }
         ]).then(answers=>{
+            // console.log(answers)
             const chRole=res.find(element=>{
                 return element.title===answers.role
                 //return element.title.toUpperCase()===answers.role.toUpperCase()
@@ -207,13 +208,13 @@ function addEmp(){
             const chMan=res.find(element=>{
                 return element.department_id===answers.man
             });
-            console.log(chRole.id,chMan.departament_id);
+            console.log(chRole.id,chMan.department_id);
             // console.log(chRole.id,chMan.manager_id);
             const newEmployee={
                 first_name: answers.first_name,
                 last_name: answers.last_name,
                 role_id: chRole.id,
-                manager_id: chMan.manager_id
+                manager_id: chMan.department_id
             };
             // id INT PRIMARY KEY AUTO_INCREMENT Not Null,
         // first_name VARCHAR(30)Not Null,
