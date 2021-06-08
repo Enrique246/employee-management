@@ -230,7 +230,50 @@ function addEmp(){
         })
     })
 }
-//Update Employee
+//Update Employee-----------------------------
+function updateEmp(){
+    connection.query("SELECT * FROM employee", function(err, res){
+        if (err) throw err;
+        const names= res.map(element=>{
+            return element.id
+        })
+  
+        connection.query("SELECT id, title, department_id FROM role_employee", function(err, final){
+            if (err) throw err;
+            const roles= final.map(element=> element.title);
+            inquirer.prompt([
+                {
+                type:"list",
+                name:"employee",
+                message: "Which employee would you like to update?",
+                choices:names,
+            },
+            {
+                type:"list",
+                name:"role",
+                message: "What is their role?",
+                choices:roles,
+            },
+        ]).then(answers =>{
+            console.log(answers);
+            const updateID=answers.employee;
+            console.log(updateID)
+            const chRole = final.find(element =>{
+                return element.title === answers.role
+            });
+            console.log(chRole);
+            connection.query("UPDATE employee SET role_id=? where id=?", [chRole.id,updateID],function(err, yes){
+                if (err) throw err;
+                console.log(`The role has been successfully changed`)
+                allFinished();
+            })
+        })
+            })
+        })
+    }
+
+
+
 //Add Department
 function addDepart(){
     connection.query("SELECT * FROM department", function(err, res){
@@ -321,3 +364,4 @@ inquirer.prompt([
 })
 
 }
+
