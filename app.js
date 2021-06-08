@@ -97,7 +97,7 @@ function showDepart(){
     if (err) throw err;
 
     console.table(res);
-    // allFinished();
+    allFinished();
 });
 }
 //Show Roles
@@ -152,9 +152,13 @@ inquirer.prompt([
 
     ]
 }
-])
-
-
-
+]).then(function(answers){
+    if (answers.goon){
+        whatTo()
+    }else {
+        console.log(`See you!`)
+        process.exit();
+    }
+})
 
 }
