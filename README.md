@@ -1,5 +1,3 @@
-## Homework 12
-
 ## Employee Management System
 ### Description
 - What was your motivation?
@@ -32,7 +30,6 @@ So that I can organize and plan my business
 - https://www.npmjs.com/package/inquirer
 - https://stackoverflow.com/questions/57344889/typeerror-cannot-read-property-type-of-undefined
 - https://www.w3schools.com/sql/sql_syntax.asp
-- Class activities
 
 
 ## Credits
