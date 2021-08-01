@@ -16,7 +16,7 @@ So that I can organize and plan my business
   - Mapping and returning elements from a database
   - SQL querie construction
 
-### Lenguages Required:
+### Languages Required:
 - Node.js
 - JavaScript
 - Inquirer
