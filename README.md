@@ -4,7 +4,8 @@
   - Learning to build a complete app with Node.js and sql.
 - Why did you build this project?  
   - To undesterstand how sql and Node.js relate and work togather.
-- What problem does it solve?
+
+## Summary
 ```
 As a business owner
 I want to be able to view and manage the departments, roles, and employees in my company
