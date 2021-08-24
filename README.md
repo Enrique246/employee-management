@@ -23,8 +23,11 @@ So that I can organize and plan my business
 - SQL
 
 ## Usage
+- Please watch the next video to observe how to view the system and input the proper instructions:
 
-[Watch Video](https://drive.google.com/file/d/1csM8bVv5LATYuYcgW0sA0DeTs_TUIkbv/view)
+[Watch Video Link](https://drive.google.com/file/d/1csM8bVv5LATYuYcgW0sA0DeTs_TUIkbv/view)
+
+![Employee Management](assets/employee-management.gif)
 
 ## Resources
 - https://www.npmjs.com/package/inquirer
